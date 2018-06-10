@@ -1,0 +1,17 @@
+{% extends("@App/layout.html.twig") %}
+{% block title %} {{ parent() }} Se connecter {% endblock %}
+{% block body %}
+    {% if error %}
+        <div class="alert alert-info">
+            {{ error.message }}
+        </div>
+    {% endif %}
+    <h1> Se connecter</h1>
+    <form action="{{ path('login') }}" method="post">
+        <label for="username">Nom d'utilisateur</label>
+        <input class="input" type="text" id="username" name="_username">
+        <label for="password">Mot de passe</label>
+        <input class="input" type="password" id="password" name="_password">
+        <button type="submit" class="btn">Se connecter</button>
+    </form>
+{% endblock %}

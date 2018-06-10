@@ -1,0 +1,18 @@
+{% extends"@App/layout.html.twig" %}
+{% block title %} {{ parent() }} S'enregistrer {% endblock %}
+{% block body %}
+    <h1>S'inscrire</h1>
+    {{ form_start(form) }}
+
+    {{ form_label(form.username, 'Nom d\'utilisateur') }}
+    {{ form_errors(form.username) }}
+    {{ form_widget(form.username, {'attr': {'class':'input'}}) }}
+
+    {{ form_row(form.password.first) }}
+    {{ form_row(form.password.second) }}
+
+    {{ form_widget(form.save, { 'label': 'Créer un compte'}) }}
+
+    {{ form_end(form) }}
+
+{% endblock %}

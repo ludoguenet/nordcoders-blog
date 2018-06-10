@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %} Nordcoders |{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.svg') }}" />
+    {% endblock %}
+<body>
+<header>
+    <div class="container top-nav">
+        <div class="logo">
+            <div class="burger" id="toggle-burger">&#9776;</div>
+            <a href="{{path('homepage')}}" class="logo-link">NORDCODERS</a>
+        </div>
+        {% include '@App/includes/navbar.html.twig' %}
+    </div>
+</header>
+<div class="container">
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% block body %}
+    {% endblock %}
+</div>
+<div class="footer">
+    <div class="footer-element">Coded With <ion-icon name="heart"></ion-icon> by Ludovic Guénet | {{ "now"|date("Y") }}</div>
+    <div class="footer-element">L'objectif de ce site est de partager avec vous ce que j'apprends. Je me suis interessé au développement web depuis un certain temps déjà et j'ai envie de partager ça avec vous dès maintenant</div>
+</div>
+{% block javascripts %}
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
+{% endblock javascripts %}
+</body>
+</html>

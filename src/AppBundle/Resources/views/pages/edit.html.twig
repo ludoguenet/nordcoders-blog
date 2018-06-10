@@ -1,0 +1,36 @@
+{% extends "@App/layout.html.twig" %}
+{% block title %} {{ parent() }} Edition de {{ post.title }} {% endblock %}
+{% block body %}
+    <h1>{{ post.title }}</h1>
+    {{ form_start(form) }}
+    {{ form_label(form.title, 'Titre') }}
+    {{ form_errors(form.title) }}
+    {{ form_widget(form.title, {'attr': {'class': 'input'}}) }}
+
+    {{ form_label(form.content, 'Contenu') }}
+    {{ form_errors(form.content) }}
+    {{ form_widget(form.content, {'attr': {'class': 'input'}}) }}
+
+
+    {{ form_label(form.tags) }}
+    {{ form_errors(form.tags) }}
+    {{ form_widget(form.tags, {'attr': {'class': 'input'}}) }}
+
+    {{ form_errors(form.image) }}
+    {{ form_widget(form.image, {'attr': {'class': 'input'}}) }}
+
+    {% if post.image != null %}
+        <figure class="input">
+            <img class="is128" src="{{ asset('uploads/img/' ~  post.image.id ~ '.' ~ post.image.extension ) }}"
+                 alt="{{ post.image.alt }}">
+        </figure>
+    {% endif %}
+
+    {{ form_label(form.isPublished, 'Publié ?') }}
+    {{ form_errors(form.isPublished) }}
+    {{ form_widget(form.isPublished) }}
+
+    {{ form_widget(form.save, { 'label': 'Editer l\'article' }) }}
+    {{ form_end(form) }}
+{% endblock %}
+
