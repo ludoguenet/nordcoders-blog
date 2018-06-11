@@ -125,9 +125,22 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // comment.delete
-        if (0 === strpos($pathinfo, '/comments/delete') && preg_match('#^/comments/delete/(?P<id>\\d+)$#sD', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'comment.delete')), array (  '_controller' => 'AppBundle\\Controller\\CommentController::deleteAction',));
+        elseif (0 === strpos($pathinfo, '/comments')) {
+            // comment.add
+            if ('/comments/add' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CommentController::addAction',  '_route' => 'comment.add',);
+            }
+
+            // comment.update
+            if ('/comments/update' === $pathinfo) {
+                return array (  '_controller' => 'AppBundle\\Controller\\CommentController::updateAction',  '_route' => 'comment.update',);
+            }
+
+            // comment.delete
+            if (0 === strpos($pathinfo, '/comments/delete') && preg_match('#^/comments/delete/(?P<id>\\d+)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'comment.delete')), array (  '_controller' => 'AppBundle\\Controller\\CommentController::deleteAction',));
+            }
+
         }
 
         // homepage

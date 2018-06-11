@@ -22,18 +22,16 @@ class CommentVoter extends Voter
     }
 
     const DEL = 'delete';
+    const EDIT = 'edit';
 
     /**
-     * Determines if the attribute and subject are supported by this voter.
-     *
-     * @param string $attribute An attribute
-     * @param mixed $subject The subject to secure, e.g. an object the user wants to access or any other PHP type
-     *
-     * @return bool True if the attribute and subject are supported, false otherwise
+     * @param string $attribute
+     * @param mixed $subject
+     * @return bool
      */
     protected function supports($attribute, $subject)
     {
-        if (!in_array($attribute, [self::DEL])) {
+        if (!in_array($attribute, [self::DEL, self::EDIT])) {
             return false;
         }
 
@@ -45,13 +43,9 @@ class CommentVoter extends Voter
     }
 
     /**
-     * Perform a single access check operation on a given attribute, subject and token.
-     * It is safe to assume that $attribute and $subject already passed the "supports()" method check.
-     *
      * @param string $attribute
      * @param mixed $subject
      * @param TokenInterface $token
-     *
      * @return bool
      */
     protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
@@ -71,6 +65,8 @@ class CommentVoter extends Voter
         switch ($attribute) {
             case self::DEL:
                 return $this->canDelete($comment, $user);
+            case self::EDIT:
+                return $this->canEdit($comment, $user);
         }
 
         throw new \LogicException('This exception should never be triggered');
@@ -82,6 +78,11 @@ class CommentVoter extends Voter
      * @return bool
      */
     public function canDelete(Comment $comment, User $user)
+    {
+        return $comment->getUser() === $user;
+    }
+
+    public function canEdit(Comment $comment, User $user)
     {
         return $comment->getUser() === $user;
     }

@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Comment;
 use AppBundle\Form\CommentType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -49,27 +48,11 @@ class DefaultController extends Controller
             throw new NotFoundHttpException("L'article $slug n'existe pas");
         }
         $tags = $post->getTags();
-        $comment = new Comment();
-        $form = $this->createForm(CommentType::class, $comment);
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
-            if ($form->isSubmitted() && $form->isValid()) {
-                if (!$em->getRepository('AppBundle:Comment')->isSpam('10')) {
-                    $comment->setPost($post);
-                    $comment->setUser($this->getUser());
-                    $em->persist($comment);
-                    $em->flush();
-                    $this->get('session')->getFlashBag()->set('notice', 'Votre commentaire vient d\'être ajouté!');
-                    return $this->redirect($request->getUri());
-                }
-            }
-        }
         $comments = $em->getRepository('AppBundle:Comment')->getCommentsByOrder($post->getId());
         return $this->render('@App/pages/view.html.twig', [
             'post' => $post,
             'tags' => $tags,
             'comments' => $comments,
-            'form' => $form->createView()
         ]);
     }
 

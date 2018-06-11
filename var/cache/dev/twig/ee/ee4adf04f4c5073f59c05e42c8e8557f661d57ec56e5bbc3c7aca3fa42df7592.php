@@ -230,6 +230,6 @@ class __TwigTemplate_515d9857eced7f0a08657f58c779e3c4b3464d3fc6fa545022ba5b94505
     {{ form_end(form) }}
 {% endblock %}
 
-", "@App/pages/edit.html.twig", "/var/www/html/sfblog/src/AppBundle/Resources/views/pages/edit.html.twig");
+", "@App/pages/edit.html.twig", "/var/www/html/symfony-blog/src/AppBundle/Resources/views/pages/edit.html.twig");
     }
 }

@@ -78,10 +78,10 @@ class __TwigTemplate_3a9e3199bc119e1b532b85d7bd56ac5b1cddedfe1ab986839fda5d3385d
         // line 5
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["post"]) || array_key_exists("post", $context) ? $context["post"] : (function () { throw new Twig_Error_Runtime('Variable "post" does not exist.', 5, $this->source); })()), "title", array()), "html", null, true);
         echo "</h1>
-        <em>Ecrit par ";
+        <em>Ecrit par <strong>";
         // line 6
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["post"]) || array_key_exists("post", $context) ? $context["post"] : (function () { throw new Twig_Error_Runtime('Variable "post" does not exist.', 6, $this->source); })()), "author", array()), "html", null, true);
-        echo ", le ";
+        echo "</strong>, le ";
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["post"]) || array_key_exists("post", $context) ? $context["post"] : (function () { throw new Twig_Error_Runtime('Variable "post" does not exist.', 6, $this->source); })()), "createdAt", array()), "d/m/Y"), "html", null, true);
         echo "</em>
         ";
@@ -108,7 +108,7 @@ class __TwigTemplate_3a9e3199bc119e1b532b85d7bd56ac5b1cddedfe1ab986839fda5d3385d
         $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["post"]) || array_key_exists("post", $context) ? $context["post"] : (function () { throw new Twig_Error_Runtime('Variable "post" does not exist.', 13, $this->source); })()), "tags", array()));
         foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
             // line 14
-            echo "                <strong><span class=\"tag\">";
+            echo "                <strong><span class=\"tag\"><ion-icon name=\"pricetag\"></ion-icon> ";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["tag"], "name", array()), "html", null, true);
             echo "</span></strong>
             ";
@@ -124,66 +124,97 @@ class __TwigTemplate_3a9e3199bc119e1b532b85d7bd56ac5b1cddedfe1ab986839fda5d3385d
         // line 19
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
             // line 20
-            echo "            ";
-            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 20, $this->source); })()), 'form_start');
-            echo "
-            ";
-            // line 21
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 21, $this->source); })()), "content", array()), 'row');
-            echo "
-            ";
-            // line 22
-            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 22, $this->source); })()), 'form_end');
-            echo "
+            echo "            <form method=\"post\" id=\"add-comment\" action=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("comment.add");
+            echo "\">
+                <label for=\"comment_content\" class=\"required\">Mon commentaire</label>
+                <textarea name=\"_comment\" id=\"comment_content\" required=\"required\" class=\"input\"></textarea>
+                <input type=\"hidden\" name=\"_postid\" value=\"";
+            // line 23
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["post"]) || array_key_exists("post", $context) ? $context["post"] : (function () { throw new Twig_Error_Runtime('Variable "post" does not exist.', 23, $this->source); })()), "id", array()), "html", null, true);
+            echo "\">
+                <button type=\"submit\" id=\"comment_submit\" class=\"btn\">Poster</button>
+            </form>
         ";
         } else {
-            // line 24
+            // line 27
             echo "            <p><a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
             echo "\">Connectez-vous</a> pour commenter !</p>
         ";
         }
-        // line 26
+        // line 29
         echo "    </div>
     <br>
-    <h2>Commentaires:</h2>
+    <h2>
+        <ion-icon name=\"chatbubbles\"></ion-icon>
+        Commentaires:
+    </h2>
     ";
-        // line 29
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["comments"]) || array_key_exists("comments", $context) ? $context["comments"] : (function () { throw new Twig_Error_Runtime('Variable "comments" does not exist.', 29, $this->source); })()));
-        foreach ($context['_seq'] as $context["_key"] => $context["comment"]) {
-            // line 30
-            echo "        <div class=\"comment\">
-            <em>";
-            // line 31
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["comment"], "user", array()), "username", array()), "html", null, true);
-            echo " a dit</em>
-            <p>";
-            // line 32
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "content", array()), "html", null, true);
-            echo "</p>
-        </div>
-        ";
-            // line 34
-            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("delete", $context["comment"])) {
-                // line 35
-                echo "            <form action=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("comment.delete", array("id" => twig_get_attribute($this->env, $this->source, $context["comment"], "id", array()))), "html", null, true);
-                echo "\" method=\"post\">
-                <input type=\"hidden\" name=\"token\" value=\"";
-                // line 36
-                echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken("comment-item"), "html", null, true);
-                echo "\">
-                <button class=\"btn btn-danger\" type=\"submit\">Supprimer ce commentaire</button>
-            </form>
-        ";
+        // line 35
+        if ((twig_length_filter($this->env, (isset($context["comments"]) || array_key_exists("comments", $context) ? $context["comments"] : (function () { throw new Twig_Error_Runtime('Variable "comments" does not exist.', 35, $this->source); })())) > 0)) {
+            // line 36
+            echo "        ";
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["comments"]) || array_key_exists("comments", $context) ? $context["comments"] : (function () { throw new Twig_Error_Runtime('Variable "comments" does not exist.', 36, $this->source); })()));
+            foreach ($context['_seq'] as $context["_key"] => $context["comment"]) {
+                // line 37
+                echo "            <div class=\"comment\">
+                <em>";
+                // line 38
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["comment"], "user", array()), "username", array()), "html", null, true);
+                echo " a dit</em>
+                <p>";
+                // line 39
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "content", array()), "html", null, true);
+                echo "</p>
+                <div id=\"edit-div\"></div>
+            </div>
+            ";
+                // line 42
+                if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("delete", $context["comment"])) {
+                    // line 43
+                    echo "                <form style=\"display: inline-block\" action=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("comment.delete", array("id" => twig_get_attribute($this->env, $this->source, $context["comment"], "id", array()))), "html", null, true);
+                    echo "\"
+                      method=\"post\">
+                    <input type=\"hidden\" name=\"token\" value=\"";
+                    // line 45
+                    echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken("comment-item"), "html", null, true);
+                    echo "\">
+                    <button class=\"btn btn-danger btn-sm\" type=\"submit\">
+                        <ion-icon name=\"trash\"></ion-icon>
+                    </button>
+                </form>
+            ";
+                }
+                // line 51
+                echo "            ";
+                if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("edit", $context["comment"])) {
+                    // line 52
+                    echo "                <a href=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("comment.edit", array("id" => twig_get_attribute($this->env, $this->source, $context["comment"], "id", array()))), "html", null, true);
+                    echo "\" data-id=\"";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "id", array()), "html", null, true);
+                    echo "\" id=\"edit-comment\"
+                   class=\"btn btn-warning btn-sm\">
+                    <ion-icon name=\"code-working\"></ion-icon>
+                </a>
+            ";
+                }
+                // line 57
+                echo "        ";
             }
-            // line 40
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['comment'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 58
             echo "    ";
+        } else {
+            // line 59
+            echo "        <h4>Aucun commentaire sur cet article pour le moment</h4>
+    ";
         }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['comment'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -204,7 +235,7 @@ class __TwigTemplate_3a9e3199bc119e1b532b85d7bd56ac5b1cddedfe1ab986839fda5d3385d
 
     public function getDebugInfo()
     {
-        return array (  182 => 40,  175 => 36,  170 => 35,  168 => 34,  163 => 32,  159 => 31,  156 => 30,  152 => 29,  147 => 26,  141 => 24,  136 => 22,  132 => 21,  127 => 20,  125 => 19,  120 => 16,  111 => 14,  107 => 13,  101 => 11,  96 => 9,  91 => 8,  89 => 7,  83 => 6,  79 => 5,  76 => 4,  67 => 3,  45 => 2,  15 => 1,);
+        return array (  215 => 59,  212 => 58,  206 => 57,  195 => 52,  192 => 51,  183 => 45,  177 => 43,  175 => 42,  169 => 39,  165 => 38,  162 => 37,  157 => 36,  155 => 35,  147 => 29,  141 => 27,  134 => 23,  127 => 20,  125 => 19,  120 => 16,  111 => 14,  107 => 13,  101 => 11,  96 => 9,  91 => 8,  89 => 7,  83 => 6,  79 => 5,  76 => 4,  67 => 3,  45 => 2,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -214,7 +245,7 @@ class __TwigTemplate_3a9e3199bc119e1b532b85d7bd56ac5b1cddedfe1ab986839fda5d3385d
 {% block body %}
     <div class=\"blog-post\">
         <h1>{{ post.title }}</h1>
-        <em>Ecrit par {{ post.author }}, le {{ post.createdAt|date('d/m/Y') }}</em>
+        <em>Ecrit par <strong>{{ post.author }}</strong>, le {{ post.createdAt|date('d/m/Y') }}</em>
         {% if(post.image != null) %}
             <img src=\"{{ asset('uploads/img/') ~ post.image.id ~ '.' ~ post.image.extension }}\"
                  alt=\"{{ post.image.alt }}\">
@@ -222,33 +253,53 @@ class __TwigTemplate_3a9e3199bc119e1b532b85d7bd56ac5b1cddedfe1ab986839fda5d3385d
         <p>{{ post.content|raw }}</p>
         <p>
             {% for tag in post.tags %}
-                <strong><span class=\"tag\">{{ tag.name }}</span></strong>
+                <strong><span class=\"tag\"><ion-icon name=\"pricetag\"></ion-icon> {{ tag.name }}</span></strong>
             {% endfor %}
         </p>
     </div>
     <div class=\"comments\">
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-            {{ form_start(form) }}
-            {{ form_row(form.content) }}
-            {{ form_end(form) }}
+            <form method=\"post\" id=\"add-comment\" action=\"{{ path('comment.add') }}\">
+                <label for=\"comment_content\" class=\"required\">Mon commentaire</label>
+                <textarea name=\"_comment\" id=\"comment_content\" required=\"required\" class=\"input\"></textarea>
+                <input type=\"hidden\" name=\"_postid\" value=\"{{ post.id }}\">
+                <button type=\"submit\" id=\"comment_submit\" class=\"btn\">Poster</button>
+            </form>
         {% else %}
             <p><a href=\"{{ path('login') }}\">Connectez-vous</a> pour commenter !</p>
         {% endif %}
     </div>
     <br>
-    <h2>Commentaires:</h2>
-    {% for comment in comments %}
-        <div class=\"comment\">
-            <em>{{ comment.user.username }} a dit</em>
-            <p>{{ comment.content }}</p>
-        </div>
-        {% if (is_granted('delete', comment)) %}
-            <form action=\"{{ path('comment.delete', {'id': comment.id}) }}\" method=\"post\">
-                <input type=\"hidden\" name=\"token\" value=\"{{ csrf_token('comment-item') }}\">
-                <button class=\"btn btn-danger\" type=\"submit\">Supprimer ce commentaire</button>
-            </form>
-        {% endif %}
-    {% endfor %}
-{% endblock %}", "@App/pages/view.html.twig", "/var/www/html/sfblog/src/AppBundle/Resources/views/pages/view.html.twig");
+    <h2>
+        <ion-icon name=\"chatbubbles\"></ion-icon>
+        Commentaires:
+    </h2>
+    {% if comments|length > 0 %}
+        {% for comment in comments %}
+            <div class=\"comment\">
+                <em>{{ comment.user.username }} a dit</em>
+                <p>{{ comment.content }}</p>
+                <div id=\"edit-div\"></div>
+            </div>
+            {% if (is_granted('delete', comment)) %}
+                <form style=\"display: inline-block\" action=\"{{ path('comment.delete', {'id': comment.id}) }}\"
+                      method=\"post\">
+                    <input type=\"hidden\" name=\"token\" value=\"{{ csrf_token('comment-item') }}\">
+                    <button class=\"btn btn-danger btn-sm\" type=\"submit\">
+                        <ion-icon name=\"trash\"></ion-icon>
+                    </button>
+                </form>
+            {% endif %}
+            {% if (is_granted('edit', comment)) %}
+                <a href=\"{{ path('comment.edit', {'id': comment.id}) }}\" data-id=\"{{ comment.id }}\" id=\"edit-comment\"
+                   class=\"btn btn-warning btn-sm\">
+                    <ion-icon name=\"code-working\"></ion-icon>
+                </a>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <h4>Aucun commentaire sur cet article pour le moment</h4>
+    {% endif %}
+{% endblock %}", "@App/pages/view.html.twig", "/var/www/html/symfony-blog/src/AppBundle/Resources/views/pages/view.html.twig");
     }
 }

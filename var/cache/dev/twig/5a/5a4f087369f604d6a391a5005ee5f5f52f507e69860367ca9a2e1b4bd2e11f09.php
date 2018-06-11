@@ -417,6 +417,6 @@ class __TwigTemplate_04b02f814c8a0a9c8e4df2960aebb4e2dc63289519ebd1a63ff34f3d03f
     });
 
 /*]]>*/</script>
-", "@Twig/base_js.html.twig", "/var/www/html/sfblog/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views/base_js.html.twig");
+", "@Twig/base_js.html.twig", "/var/www/html/symfony-blog/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views/base_js.html.twig");
     }
 }

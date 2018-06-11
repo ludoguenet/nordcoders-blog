@@ -11,8 +11,13 @@
     margin: 0;
 }
 
-:focus {outline:none;}
-::-moz-focus-inner {border:0;}
+:focus {
+    outline: none;
+}
+
+::-moz-focus-inner {
+    border: 0;
+}
 
 input:focus, textarea:focus {
     outline: none;
@@ -35,6 +40,11 @@ a {
 
 button {
     font: inherit;
+    background: none;
+}
+
+ion-icon {
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -95,13 +105,22 @@ header {
     margin-bottom: 3em;
 }
 
+.success {
+    color: var(--accent-color);
+}
+
+.danger {
+    color: var(--danger-color);
+}
+
 .btn,
-.tag {
+.tag,
+.btn-block {
     font-size: 14px;
 }
 
 .btn,
-.btn-block{
+.btn-block {
     border: solid var(--main-color) 1px;
     display: inline-block;
     padding: 10px 20px;
@@ -112,6 +131,11 @@ header {
     transition: all .4s;
     background: none;
     cursor: pointer;
+}
+
+.btn-sm {
+    padding: 0 5px;
+    margin-top: 0;
 }
 
 .btn-block {

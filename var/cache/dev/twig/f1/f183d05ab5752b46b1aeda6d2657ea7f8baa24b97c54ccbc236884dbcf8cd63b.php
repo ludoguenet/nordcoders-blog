@@ -117,7 +117,7 @@ class __TwigTemplate_539ad23708de406643e91eacbd713123b56093fdd100d14e0c23480f0ac
                 $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["post"], "tags", array()));
                 foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
                     // line 18
-                    echo "                        <strong><span class=\"tag\"><ion-icon name=\"folder\"></ion-icon> ";
+                    echo "                        <strong><span class=\"tag\"><ion-icon name=\"pricetag\"></ion-icon> ";
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["tag"], "name", array()), "html", null, true);
                     echo "</span></strong>
                     ";
@@ -238,7 +238,7 @@ class __TwigTemplate_539ad23708de406643e91eacbd713123b56093fdd100d14e0c23480f0ac
                 <p>{{ post.content|truncate|raw }}</p>
                 <p>
                     {% for tag in post.tags %}
-                        <strong><span class=\"tag\"><ion-icon name=\"folder\"></ion-icon> {{ tag.name }}</span></strong>
+                        <strong><span class=\"tag\"><ion-icon name=\"pricetag\"></ion-icon> {{ tag.name }}</span></strong>
                     {% endfor %}
                 </p>
                 <a href=\"{{ path('viewpost', {'slug': post.slug}) }}\" class=\"btn\">Lire la suite</a>
@@ -262,6 +262,6 @@ class __TwigTemplate_539ad23708de406643e91eacbd713123b56093fdd100d14e0c23480f0ac
             {% endif %}
         </div>
     </div>
-{% endblock %}", "@App/pages/search.html.twig", "/var/www/html/sfblog/src/AppBundle/Resources/views/pages/search.html.twig");
+{% endblock %}", "@App/pages/search.html.twig", "/var/www/html/symfony-blog/src/AppBundle/Resources/views/pages/search.html.twig");
     }
 }

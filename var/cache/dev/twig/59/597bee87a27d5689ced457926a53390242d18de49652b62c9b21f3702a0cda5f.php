@@ -152,6 +152,6 @@ class __TwigTemplate_85094ad67361956e7929ce0a988cdd39a020e98f7ab5964220127f7c9a6
 
     {{ form_end(form) }}
 
-{% endblock %}", "@App/pages/register.html.twig", "/var/www/html/sfblog/src/AppBundle/Resources/views/pages/register.html.twig");
+{% endblock %}", "@App/pages/register.html.twig", "/var/www/html/symfony-blog/src/AppBundle/Resources/views/pages/register.html.twig");
     }
 }

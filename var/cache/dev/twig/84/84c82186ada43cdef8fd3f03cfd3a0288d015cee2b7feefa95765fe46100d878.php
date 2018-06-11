@@ -136,6 +136,6 @@ class __TwigTemplate_2ad398b23c92067c053adf05efee1237212dac3578fa42a5859c0f7aa85
         <input class=\"input\" type=\"password\" id=\"password\" name=\"_password\">
         <button type=\"submit\" class=\"btn\">Se connecter</button>
     </form>
-{% endblock %}", "@App/pages/login.html.twig", "/var/www/html/sfblog/src/AppBundle/Resources/views/pages/login.html.twig");
+{% endblock %}", "@App/pages/login.html.twig", "/var/www/html/symfony-blog/src/AppBundle/Resources/views/pages/login.html.twig");
     }
 }

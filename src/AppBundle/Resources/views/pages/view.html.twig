@@ -11,35 +11,54 @@
         <p>{{ post.content|raw }}</p>
         <p>
             {% for tag in post.tags %}
-                <strong><span class="tag"><ion-icon name="folder"></ion-icon> {{ tag.name }}</span></strong>
+                <strong><span class="tag"><ion-icon name="pricetag"></ion-icon> {{ tag.name }}</span></strong>
             {% endfor %}
         </p>
     </div>
     <div class="comments">
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-            {{ form_start(form) }}
-            {{ form_row(form.content) }}
-            {{ form_end(form) }}
+            <form method="post" id="add-comment" action="{{ path('comment.add') }}">
+                <label for="comment_content" class="required">Mon commentaire</label>
+                <textarea name="_comment" id="comment_content" required="required" class="input"></textarea>
+                <input type="hidden" name="_postid" value="{{ post.id }}">
+                <button type="submit" id="comment_submit" class="btn">Poster mon commentaire</button>
+            </form>
         {% else %}
             <p><a href="{{ path('login') }}">Connectez-vous</a> pour commenter !</p>
         {% endif %}
-    </div>
-    <br>
-    <h2><ion-icon name="chatbubbles"></ion-icon> Commentaires:</h2>
-    {% if comments|length > 0 %}
-    {% for comment in comments %}
-        <div class="comment">
-            <em>{{ comment.user.username }} a dit</em>
-            <p>{{ comment.content }}</p>
-        </div>
-        {% if (is_granted('delete', comment)) %}
-            <form action="{{ path('comment.delete', {'id': comment.id}) }}" method="post">
-                <input type="hidden" name="token" value="{{ csrf_token('comment-item') }}">
-                <button class="btn btn-danger" type="submit">Supprimer ce commentaire</button>
-            </form>
+        <br>
+        <h2>
+            <ion-icon name="chatbubbles"></ion-icon>
+            Commentaires:
+        </h2>
+        {% if comments|length > 0 %}
+            {% for comment in comments %}
+                <div class="comment">
+                    <em>{{ comment.user.username }} a dit</em>
+                    <p>{{ comment.content }}</p>
+                    {% if (is_granted('delete', comment)) %}
+                        <form style="display: inline-block" action="{{ path('comment.delete', {'id': comment.id}) }}"
+                              method="post">
+                            <input type="hidden" name="token" value="{{ csrf_token('comment-item') }}">
+                            <button class="btn btn-danger btn-sm" type="submit">
+                                <ion-icon name="trash"></ion-icon>
+                            </button>
+                        </form>
+                    {% endif %}
+                    {% if (is_granted('edit', comment)) %}
+                        <a href="{{ path('comment.update') }}" id="edit-comment" data-id="{{ comment.id }}"
+                           class="btn btn-warning btn-sm">
+                            <ion-icon name="code-working"></ion-icon>
+                        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <h4>Aucun commentaire sur cet article pour le moment</h4>
         {% endif %}
-    {% endfor %}
-    {% else %}
-        <h4>Aucun commentaire sur cet article pour le moment</h4>
-    {% endif %}
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/addComment.js') }}"></script>
+    <script src="{{ asset('js/editComment.js') }}"></script>
 {% endblock %}

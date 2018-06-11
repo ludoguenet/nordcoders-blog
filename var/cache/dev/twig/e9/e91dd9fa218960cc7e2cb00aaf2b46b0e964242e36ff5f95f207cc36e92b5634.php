@@ -352,6 +352,6 @@ class __TwigTemplate_b2bb3f78253971f74695b85dab84110acbe338f72090b90b36772232d25
         {% endif %}
     </script>
 {% endblock %}
-", "@FOSCKEditor/Form/ckeditor_widget.html.twig", "/var/www/html/sfblog/vendor/friendsofsymfony/ckeditor-bundle/src/Resources/views/Form/ckeditor_widget.html.twig");
+", "@FOSCKEditor/Form/ckeditor_widget.html.twig", "/var/www/html/symfony-blog/vendor/friendsofsymfony/ckeditor-bundle/src/Resources/views/Form/ckeditor_widget.html.twig");
     }
 }
