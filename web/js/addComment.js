@@ -22,6 +22,7 @@ if (document.body.contains(commentAddForm)) {
             }
         };
         request.open('POST', url, true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         request.send(data);
     });
 }

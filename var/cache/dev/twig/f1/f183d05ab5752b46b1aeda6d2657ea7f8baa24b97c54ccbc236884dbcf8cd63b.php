@@ -77,108 +77,115 @@ class __TwigTemplate_539ad23708de406643e91eacbd713123b56093fdd100d14e0c23480f0ac
         // line 6
         if ((twig_length_filter($this->env, (isset($context["posts"]) || array_key_exists("posts", $context) ? $context["posts"] : (function () { throw new Twig_Error_Runtime('Variable "posts" does not exist.', 6, $this->source); })())) > 0)) {
             // line 7
-            echo "        ";
+            echo "            ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable((isset($context["posts"]) || array_key_exists("posts", $context) ? $context["posts"] : (function () { throw new Twig_Error_Runtime('Variable "posts" does not exist.', 7, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["post"]) {
                 // line 8
-                echo "            <div class=\"blog-post\">
-                <h1>";
+                echo "                <div class=\"blog-post\">
+                    <h1>";
                 // line 9
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "title", array()), "html", null, true);
                 echo "</h1>
-                <em>Ecrit par <strong>";
+                    <em>Ecrit par <strong>";
                 // line 10
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "author", array()), "html", null, true);
                 echo "</strong>, le ";
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "createdAt", array()), "d/m/Y"), "html", null, true);
                 echo "</em>
-                ";
+                    ";
                 // line 11
                 if ((twig_get_attribute($this->env, $this->source, $context["post"], "image", array()) != null)) {
                     // line 12
-                    echo "                    <img class=\"thumb1\" src=\"";
+                    echo "                        <img class=\"thumb1\"
+                             src=\"";
+                    // line 13
                     echo twig_escape_filter($this->env, ((($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("uploads/img/") . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["post"], "image", array()), "id", array())) . ".") . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["post"], "image", array()), "extension", array())), "html", null, true);
                     echo "\"
-                         alt=\"";
-                    // line 13
+                             alt=\"";
+                    // line 14
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["post"], "image", array()), "alt", array()), "html", null, true);
                     echo "\">
-                ";
+                    ";
                 }
-                // line 15
-                echo "                <p>";
+                // line 16
+                echo "                    <p>";
                 echo $this->extensions['AppBundle\Twig\AppExtension']->truncateFilter(twig_get_attribute($this->env, $this->source, $context["post"], "content", array()));
                 echo "</p>
-                <p>
-                    ";
-                // line 17
+                    <p>
+                        ";
+                // line 18
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["post"], "tags", array()));
                 foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
-                    // line 18
-                    echo "                        <strong><span class=\"tag\"><ion-icon name=\"pricetag\"></ion-icon> ";
+                    // line 19
+                    echo "                            <strong><span class=\"tag\"><ion-icon
+                                            name=\"pricetag\"></ion-icon> ";
+                    // line 20
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["tag"], "name", array()), "html", null, true);
                     echo "</span></strong>
-                    ";
+                        ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tag'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 20
-                echo "                </p>
-                <a href=\"";
-                // line 21
+                // line 22
+                echo "                    </p>
+                    <a href=\"";
+                // line 23
                 echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("viewpost", array("slug" => twig_get_attribute($this->env, $this->source, $context["post"], "slug", array()))), "html", null, true);
                 echo "\" class=\"btn\">Lire la suite</a>
-                ";
-                // line 22
+                    ";
+                // line 24
                 if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
-                    // line 23
-                    echo "                    <a class=\"btn btn-warning\" href=\"";
+                    // line 25
+                    echo "                        <a class=\"btn btn-warning\" href=\"";
                     echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("editpost", array("id" => twig_get_attribute($this->env, $this->source, $context["post"], "id", array()))), "html", null, true);
                     echo "\">Editer</a>
-                    <form style=\"display:inline-block\" action=\"";
-                    // line 24
+                        <form style=\"display:inline-block\" action=\"";
+                    // line 26
                     echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("deletepost", array("id" => twig_get_attribute($this->env, $this->source, $context["post"], "id", array()))), "html", null, true);
-                    echo "\" method=\"post\">
-                        <input type=\"hidden\" name=\"token\" value=\"";
-                    // line 25
+                    echo "\"
+                              method=\"post\">
+                            <input type=\"hidden\" name=\"token\" value=\"";
+                    // line 28
                     echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken("delete-post"), "html", null, true);
                     echo "\">
-                        <button class=\"btn btn-danger\" type=\"submit\">Supprimer l'article</button>
-                    </form>
-                ";
+                            <button class=\"btn btn-danger\" type=\"submit\">Supprimer l'article</button>
+                        </form>
+                    ";
                 }
-                // line 29
-                echo "            </div>
-        ";
+                // line 32
+                echo "                </div>
+            ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['post'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 31
+            // line 34
             echo "        ";
         } else {
-            // line 32
-            echo "        <div class=\"alert alert-info\">Aucun post n'a été trouvé</div>
+            // line 35
+            echo "            <div class=\"alert alert-info\">Aucun post n'a été trouvé</div>
         ";
         }
-        // line 34
+        // line 37
         echo "        <div class=\"paginate-block\">
             ";
-        // line 35
-        if (((isset($context["pagesNbr"]) || array_key_exists("pagesNbr", $context) ? $context["pagesNbr"] : (function () { throw new Twig_Error_Runtime('Variable "pagesNbr" does not exist.', 35, $this->source); })()) != 0)) {
-            // line 36
+        // line 38
+        if (((isset($context["pagesNbr"]) || array_key_exists("pagesNbr", $context) ? $context["pagesNbr"] : (function () { throw new Twig_Error_Runtime('Variable "pagesNbr" does not exist.', 38, $this->source); })()) != 0)) {
+            // line 39
             echo "                ";
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(range(1, (isset($context["pagesNbr"]) || array_key_exists("pagesNbr", $context) ? $context["pagesNbr"] : (function () { throw new Twig_Error_Runtime('Variable "pagesNbr" does not exist.', 36, $this->source); })())));
+            $context['_seq'] = twig_ensure_traversable(range(1, (isset($context["pagesNbr"]) || array_key_exists("pagesNbr", $context) ? $context["pagesNbr"] : (function () { throw new Twig_Error_Runtime('Variable "pagesNbr" does not exist.', 39, $this->source); })())));
             foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-                // line 37
+                // line 40
                 echo "                    <span><a href=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search", array("q" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 37, $this->source); })()), "request", array()), "get", array(0 => "q"), "method"), "page" => $context["i"])), "html", null, true);
-                echo "\" class=\"paginate";
-                if (($context["i"] == (isset($context["cPage"]) || array_key_exists("cPage", $context) ? $context["cPage"] : (function () { throw new Twig_Error_Runtime('Variable "cPage" does not exist.', 37, $this->source); })()))) {
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search", array("q" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 40, $this->source); })()), "request", array()), "get", array(0 => "q"), "method"), "page" => $context["i"])), "html", null, true);
+                echo "\"
+                             class=\"paginate";
+                // line 41
+                if (($context["i"] == (isset($context["cPage"]) || array_key_exists("cPage", $context) ? $context["cPage"] : (function () { throw new Twig_Error_Runtime('Variable "cPage" does not exist.', 41, $this->source); })()))) {
                     echo " current";
                 }
                 echo "\">";
@@ -189,10 +196,10 @@ class __TwigTemplate_539ad23708de406643e91eacbd713123b56093fdd100d14e0c23480f0ac
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 39
+            // line 43
             echo "            ";
         }
-        // line 40
+        // line 44
         echo "        </div>
     </div>
 ";
@@ -216,7 +223,7 @@ class __TwigTemplate_539ad23708de406643e91eacbd713123b56093fdd100d14e0c23480f0ac
 
     public function getDebugInfo()
     {
-        return array (  196 => 40,  193 => 39,  178 => 37,  173 => 36,  171 => 35,  168 => 34,  164 => 32,  161 => 31,  154 => 29,  147 => 25,  143 => 24,  138 => 23,  136 => 22,  132 => 21,  129 => 20,  120 => 18,  116 => 17,  110 => 15,  105 => 13,  100 => 12,  98 => 11,  92 => 10,  88 => 9,  85 => 8,  80 => 7,  78 => 6,  74 => 4,  65 => 3,  45 => 2,  15 => 1,);
+        return array (  203 => 44,  200 => 43,  188 => 41,  183 => 40,  178 => 39,  176 => 38,  173 => 37,  169 => 35,  166 => 34,  159 => 32,  152 => 28,  147 => 26,  142 => 25,  140 => 24,  136 => 23,  133 => 22,  125 => 20,  122 => 19,  118 => 18,  112 => 16,  107 => 14,  103 => 13,  100 => 12,  98 => 11,  92 => 10,  88 => 9,  85 => 8,  80 => 7,  78 => 6,  74 => 4,  65 => 3,  45 => 2,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -227,37 +234,41 @@ class __TwigTemplate_539ad23708de406643e91eacbd713123b56093fdd100d14e0c23480f0ac
     <h1>Ma recherche...</h1>
     <div class=\"blog-posts\">
         {% if posts|length > 0 %}
-        {% for post in posts %}
-            <div class=\"blog-post\">
-                <h1>{{ post.title }}</h1>
-                <em>Ecrit par <strong>{{ post.author }}</strong>, le {{ post.createdAt|date('d/m/Y') }}</em>
-                {% if(post.image != null) %}
-                    <img class=\"thumb1\" src=\"{{ asset('uploads/img/') ~ post.image.id ~ '.' ~ post.image.extension }}\"
-                         alt=\"{{ post.image.alt }}\">
-                {% endif %}
-                <p>{{ post.content|truncate|raw }}</p>
-                <p>
-                    {% for tag in post.tags %}
-                        <strong><span class=\"tag\"><ion-icon name=\"pricetag\"></ion-icon> {{ tag.name }}</span></strong>
-                    {% endfor %}
-                </p>
-                <a href=\"{{ path('viewpost', {'slug': post.slug}) }}\" class=\"btn\">Lire la suite</a>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a class=\"btn btn-warning\" href=\"{{ path('editpost', {'id': post.id}) }}\">Editer</a>
-                    <form style=\"display:inline-block\" action=\"{{ path('deletepost', {'id': post.id}) }}\" method=\"post\">
-                        <input type=\"hidden\" name=\"token\" value=\"{{ csrf_token('delete-post') }}\">
-                        <button class=\"btn btn-danger\" type=\"submit\">Supprimer l'article</button>
-                    </form>
-                {% endif %}
-            </div>
-        {% endfor %}
+            {% for post in posts %}
+                <div class=\"blog-post\">
+                    <h1>{{ post.title }}</h1>
+                    <em>Ecrit par <strong>{{ post.author }}</strong>, le {{ post.createdAt|date('d/m/Y') }}</em>
+                    {% if(post.image != null) %}
+                        <img class=\"thumb1\"
+                             src=\"{{ asset('uploads/img/') ~ post.image.id ~ '.' ~ post.image.extension }}\"
+                             alt=\"{{ post.image.alt }}\">
+                    {% endif %}
+                    <p>{{ post.content|truncate|raw }}</p>
+                    <p>
+                        {% for tag in post.tags %}
+                            <strong><span class=\"tag\"><ion-icon
+                                            name=\"pricetag\"></ion-icon> {{ tag.name }}</span></strong>
+                        {% endfor %}
+                    </p>
+                    <a href=\"{{ path('viewpost', {'slug': post.slug}) }}\" class=\"btn\">Lire la suite</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class=\"btn btn-warning\" href=\"{{ path('editpost', {'id': post.id}) }}\">Editer</a>
+                        <form style=\"display:inline-block\" action=\"{{ path('deletepost', {'id': post.id}) }}\"
+                              method=\"post\">
+                            <input type=\"hidden\" name=\"token\" value=\"{{ csrf_token('delete-post') }}\">
+                            <button class=\"btn btn-danger\" type=\"submit\">Supprimer l'article</button>
+                        </form>
+                    {% endif %}
+                </div>
+            {% endfor %}
         {% else %}
-        <div class=\"alert alert-info\">Aucun post n'a été trouvé</div>
+            <div class=\"alert alert-info\">Aucun post n'a été trouvé</div>
         {% endif %}
         <div class=\"paginate-block\">
             {% if pagesNbr != 0 %}
                 {% for i in range(1, pagesNbr) %}
-                    <span><a href=\"{{ path('search', {'q': app.request.get('q'), 'page': i}) }}\" class=\"paginate{% if i == cPage %} current{% endif %}\">{{ i }}</a></span>
+                    <span><a href=\"{{ path('search', {'q': app.request.get('q'), 'page': i}) }}\"
+                             class=\"paginate{% if i == cPage %} current{% endif %}\">{{ i }}</a></span>
                 {% endfor %}
             {% endif %}
         </div>

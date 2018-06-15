@@ -7,7 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CommentController extends Controller
 {
@@ -18,7 +17,7 @@ class CommentController extends Controller
      */
     public function addAction(Request $request)
     {
-        if ($request->isMethod('POST')) {
+        if ($request->isXmlHttpRequest()) {
             $em = $this->getDoctrine()->getManager();
             $commentRepository = $em->getRepository('AppBundle:Comment');
             $postRepository = $em->getRepository('AppBundle:Post');
@@ -43,26 +42,24 @@ class CommentController extends Controller
     /**
      * @Route("/comments/update", name="comment.update")
      * @param Request $request
-     * @return RedirectResponse
+     * @return \Symfony\Component\HttpFoundation\JsonResponse|RedirectResponse
      */
     public function updateAction(Request $request)
     {
-        if ($request->isMethod('POST')) {
+        if ($request->isXmlHttpRequest()) {
             $em = $this->getDoctrine()->getManager();
             $commentRepository = $em->getRepository('AppBundle:Comment');
+            $newComment = $request->request->get('_content');
             $commentToUpdate = $commentRepository->find($request->request->get('_commentId'));
             if ($commentToUpdate == null) {
-                throw new NotFoundHttpException("Le commentaire n'existe pas");
+                return $this->json(['fail' => 'Ce commentaire n\'exsite pas']);
             }
             $this->denyAccessUnlessGranted('edit', $commentToUpdate);
-            $commentToUpdate->setContent($request->request->get('_content'));
+            $commentToUpdate->setContent($newComment);
             $em->persist($commentToUpdate);
             $em->flush();
-            $this->get('session')->getFlashBag()->set('notice', 'Votre commentaire a bien été édité');
-            $referer = $request->headers->get('referer');
-            return new RedirectResponse($referer);
+            return $this->json(['success' => $newComment]);
         }
-        throw new NotFoundHttpException('Page Not Found');
     }
 
     /**
