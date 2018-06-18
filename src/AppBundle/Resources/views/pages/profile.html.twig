@@ -1,0 +1,17 @@
+{% extends"@App/layout.html.twig" %}
+{% block title %} {{ parent() }} Mon compte {% endblock %}
+{% block body %}
+    <h1>Mon compte</h1>
+    <form action="{{ path('profile.update') }}" method="POST">
+        <label for="password1">Mot de passe</label>
+        <input type="password" class="input" name="password1" id="password1">
+        <label for="password2">Confirmation du mot de passe</label>
+        <input type="password" class="input" name="password2" id="password2">
+        <input type="submit" class="btn" value="Mettre à jour">
+    </form>
+    <br>
+    <h2>Informations secondaires</h2>
+    {{ form_start(form) }}
+    {{ form_row(form.avatar, {'attr': {'class' : 'input'}}) }}
+    {{ form_end(form) }}
+{% endblock %}
