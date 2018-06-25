@@ -153,6 +153,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'viewpost')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::viewAction',));
         }
 
+        // profile
+        if ('/profile' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\UserController::profileAction',  '_route' => 'profile',);
+        }
+
         // search
         if ('/search' === $pathinfo) {
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::searchAction',  '_route' => 'search',);

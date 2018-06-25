@@ -11,7 +11,7 @@ if (document.body.contains(commentAddForm)) {
                     const response = JSON.parse(request.responseText);
                     if (!('fail' in response) && !document.querySelector('.success')) {
                         const comments = document.querySelector('.comments');
-                        comments.insertAdjacentHTML('beforebegin', '<h5 class="success">' + response.success + ' a bien été ajouté aux commentaires</h5>');
+                        comments.insertAdjacentHTML('beforebegin', '<h5 class="success">Votre commentaire a bien été posté</h5>');
                     } else {
                         if (!document.querySelector('.danger')) {
                             const comments = document.querySelector('.comments');

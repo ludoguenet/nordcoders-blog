@@ -122,7 +122,7 @@ class __TwigTemplate_3c38d56c4b91783f21d2d7ea358fd06231a0c82d55e0c44f02359146568
         echo "
         ";
         // line 20
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 20, $this->source); })()), "image", array()), 'widget', array("attr" => array("class" => "input")));
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 20, $this->source); })()), "image", array()), 'row', array("attr" => array("class" => "input")));
         echo "
 
         ";
@@ -191,7 +191,7 @@ class __TwigTemplate_3c38d56c4b91783f21d2d7ea358fd06231a0c82d55e0c44f02359146568
         {{ form_widget(form.tags, {'attr': {'class': 'input'}}) }}
 
         {{ form_errors(form.image) }}
-        {{ form_widget(form.image, {'attr': {'class': 'input'}}) }}
+        {{ form_row(form.image, {'attr': {'class': 'input'}}) }}
 
         {{ form_label(form.isPublished, 'Publié ?') }}
         {{ form_errors(form.isPublished) }}

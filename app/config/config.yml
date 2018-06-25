@@ -71,3 +71,14 @@ stof_doctrine_extensions:
     orm:
         default:
             sluggable:   true
+
+# Ckeditor codesnippet plugin
+fos_ck_editor:
+    default_config: my_config
+    configs:
+        my_config:
+            extraPlugins: "codesnippet"
+    plugins:
+        codesnippet:
+            path:     "bundles/fosckeditor/plugins/codesnippet/"
+            filename: "plugin.js"

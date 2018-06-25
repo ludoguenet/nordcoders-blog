@@ -2,8 +2,7 @@
     <ul id="ul-list">
         <li><a href="{{ path('homepage') }}">Blog</a></li>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <li><a href="#">Bonjour, {{ app.user.username }}</a></li>
-            <li><a href="{{ path('logout') }}">Se déconnecter</a></li>
+            <li><a href="{{ path('profile') }}">Bonjour, {{ app.user.username }}</a></li>
         {% else %}
             <li><a href="{{ path('login') }}">
                     <ion-icon name="person"></ion-icon>
@@ -12,6 +11,9 @@
                     <ion-icon name="person-add"></ion-icon>
                 </a></li>
         {% endif %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li><a href="{{ path('logout') }}">Se déconnecter</a></li>
+        {% endif %}
         {% if is_granted('ROLE_ADMIN') %}
             <li><a href="{{ path('addpost') }}">
                     <ion-icon name="paper-plane"></ion-icon>
@@ -19,7 +21,8 @@
         {% endif %}
         <li>
             <form action="{{ path('search') }}" method="GET">
-                <input class="input-search" id="search" type="text" name="q" placeholder="Rechercher">
+                <input class="input-search" id="search" type="text" name="q"
+                       placeholder="Rechercher par titre, tags...">
             </form>
         </li>
     </ul>

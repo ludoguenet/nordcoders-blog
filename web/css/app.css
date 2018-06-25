@@ -1,7 +1,7 @@
 :root {
-    --main-color: #446e5c;
-    --second-color: #fff1bc;
-    --accent-color: #7dc383;
+    --main-color: #323643;
+    --second-color: #93deff;
+    --accent-color: #f7f7f7;
     --warning-color: #D35400;
     --danger-color: #96281B;
 }
@@ -9,6 +9,17 @@
 * {
     padding: 0;
     margin: 0;
+}
+
+::selection {
+    background-color: var(--second-color);
+    color: var(--accent-color);
+}
+
+/* Firefox */
+::-moz-selection {
+    background-color: #444;
+    color: white;
 }
 
 :focus {
@@ -43,17 +54,20 @@ button {
     background: none;
 }
 
-ion-icon {
-
+hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 1em;
 }
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--main-color);
-    margin-bottom: .5em;
 }
 
 .container {
-    max-width: 960px;
+    max-width: 800px;
     margin: 0 auto 1em;
     padding: 0 1em;
 }
@@ -66,11 +80,12 @@ header {
 .top-nav {
     display: flex;
     justify-content: space-between;
-    min-height: 75px;
+    min-height: 60px;
 }
 
 .logo {
-    line-height: 75px;
+    line-height: 60px;
+    font-weight: bolder;
     color: var(--second-color);
 }
 
@@ -84,8 +99,8 @@ header {
 }
 
 .navbar ul li {
-    margin-right: 1em;
-    line-height: 75px;
+    margin-right: 1.5em;
+    line-height: 60px;
 }
 
 .navbar ul li a {
@@ -106,7 +121,7 @@ header {
 }
 
 .success {
-    color: var(--accent-color);
+    color: var(--second-color);
 }
 
 .danger {
@@ -125,7 +140,6 @@ header {
     display: inline-block;
     padding: 10px 20px;
     margin-top: .7em;
-    border-radius: 3px;
     text-decoration: none;
     color: var(--main-color);
     transition: all .4s;
@@ -155,10 +169,12 @@ header {
 
 .btn-warning:hover {
     background: var(--warning-color) !important;
+    color: var(--accent-color) !important;
 }
 
 .btn-danger:hover {
     background: var(--danger-color) !important;
+    color: var(--accent-color) !important;
 }
 
 .btn:hover,
@@ -176,6 +192,13 @@ header {
     width: 100%;
 }
 
+.avatar {
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
 .is128 {
     width: 128px;
 }
@@ -188,26 +211,26 @@ header {
 .input,
 .input-search {
     box-sizing: border-box;
-    border-radius: 3px;
     padding: 10px 15px;
-    border: solid transparent 1px;
-    transition: border ease-in-out .4s;
+    border: 1px solid var(--main-color);
+    transition: border ease-in-out .2s;
 }
 
 .input {
     margin-bottom: 1em;
     display: block;
-    border: solid var(--main-color) 1px;
     width: 100%;
 }
 
 .input-search {
     width: 100%;
+    padding: 7px 15px;
+    border-radius: 4px;
 }
 
 .input:focus,
 .input-search:focus {
-    border: solid var(--accent-color) 1px;
+    border: solid var(--second-color) 1px;
 }
 
 .thumb1 {
@@ -219,9 +242,9 @@ header {
 .tag {
     display: inline-block;
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 4px;
     text-decoration: none;
-    color: var(--second-color);
+    color: var(--accent-color);
     background: var(--main-color);
 }
 
@@ -245,7 +268,6 @@ header {
 .alert {
     padding: 20px;
     color: var(--main-color);
-    border-radius: 3px;
     margin-bottom: 15px;
 }
 
@@ -279,8 +301,8 @@ header {
 
 @media only screen and (max-width: 960px) {
     .container {
-        max-width: 800px;
-        padding: 0 .7em;
+        max-width: 750px;
+        padding: 0 1em;
     }
 }
 

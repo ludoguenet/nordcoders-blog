@@ -17,7 +17,7 @@
     {{ form_widget(form.tags, {'attr': {'class': 'input'}}) }}
 
     {{ form_errors(form.image) }}
-    {{ form_widget(form.image, {'attr': {'class': 'input'}}) }}
+    {{ form_row(form.image, {'attr': {'class': 'input'}}) }}
 
     {% if post.image != null %}
         <figure class="input">

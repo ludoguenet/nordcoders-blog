@@ -37,8 +37,17 @@ class __TwigTemplate_b7a5b81b1457ac8d6d057183551440a820a26edad887301dc82622d98ac
         // line 4
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
+    <link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,400\" rel=\"stylesheet\">
+    <link rel=\"stylesheet\" href=\"";
+        // line 6
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/app.css"), "html", null, true);
+        echo "\">
+    <link rel=\"icon\" type=\"image/x-icon\" href=\"";
+        // line 7
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("favicon.png"), "html", null, true);
+        echo "\">
     ";
-        // line 5
+        // line 8
         $this->displayBlock('stylesheets', $context, $blocks);
         // line 10
         echo "<body>
@@ -49,7 +58,7 @@ class __TwigTemplate_b7a5b81b1457ac8d6d057183551440a820a26edad887301dc82622d98ac
             <a href=\"";
         // line 15
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage");
-        echo "\" class=\"logo-link\">NORDCODERS</a>
+        echo "\" class=\"logo-link\">Nordcoders</a>
         </div>
         ";
         // line 17
@@ -81,21 +90,25 @@ class __TwigTemplate_b7a5b81b1457ac8d6d057183551440a820a26edad887301dc82622d98ac
         // line 28
         echo "</div>
 <div class=\"footer\">
-    <div class=\"footer-element\">Coded With <ion-icon name=\"heart\"></ion-icon> by Ludovic Guénet | ";
-        // line 30
+    <div class=\"footer-element\">Coded With
+        <ion-icon name=\"heart\"></ion-icon>
+        by Ludovic Guénet | ";
+        // line 32
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y"), "html", null, true);
         echo "</div>
-    <div class=\"footer-element\">L'objectif de ce site est de partager avec vous ce que j'apprends. Je me suis interessé au développement web depuis un certain temps déjà et j'ai envie de partager ça avec vous dès maintenant</div>
+    <div class=\"footer-element\">L'objectif de ce site est de partager avec vous ce que j'apprends. Je me suis interessé
+        au développement web depuis un certain temps déjà et j'ai envie de partager ça avec vous dès maintenant
+    </div>
 </div>
 <script src=\"";
-        // line 33
+        // line 37
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/app.js"), "html", null, true);
         echo "\"></script>
 <script src=\"https://unpkg.com/ionicons@4.1.2/dist/ionicons.js\"></script>
 ";
-        // line 35
+        // line 39
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 37
+        // line 41
         echo "</body>
 </html>";
         
@@ -124,7 +137,7 @@ class __TwigTemplate_b7a5b81b1457ac8d6d057183551440a820a26edad887301dc82622d98ac
 
     }
 
-    // line 5
+    // line 8
     public function block_stylesheets($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -133,17 +146,8 @@ class __TwigTemplate_b7a5b81b1457ac8d6d057183551440a820a26edad887301dc82622d98ac
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 6
-        echo "        <link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,400\" rel=\"stylesheet\">
-        <link rel=\"stylesheet\" href=\"";
-        // line 7
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/app.css"), "html", null, true);
-        echo "\"/>
-        <link rel=\"icon\" type=\"image/x-icon\" href=\"";
-        // line 8
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("favicon.svg"), "html", null, true);
-        echo "\" />
-    ";
+        // line 9
+        echo "    ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -171,7 +175,7 @@ class __TwigTemplate_b7a5b81b1457ac8d6d057183551440a820a26edad887301dc82622d98ac
 
     }
 
-    // line 35
+    // line 39
     public function block_javascripts($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -200,7 +204,7 @@ class __TwigTemplate_b7a5b81b1457ac8d6d057183551440a820a26edad887301dc82622d98ac
 
     public function getDebugInfo()
     {
-        return array (  175 => 35,  165 => 27,  156 => 26,  144 => 8,  140 => 7,  137 => 6,  128 => 5,  110 => 4,  99 => 37,  97 => 35,  92 => 33,  86 => 30,  82 => 28,  79 => 26,  70 => 23,  67 => 22,  63 => 21,  58 => 18,  56 => 17,  51 => 15,  44 => 10,  42 => 5,  38 => 4,  33 => 1,);
+        return array (  179 => 39,  169 => 27,  160 => 26,  150 => 9,  141 => 8,  123 => 4,  112 => 41,  110 => 39,  105 => 37,  97 => 32,  91 => 28,  88 => 26,  79 => 23,  76 => 22,  72 => 21,  67 => 18,  65 => 17,  60 => 15,  53 => 10,  51 => 8,  47 => 7,  43 => 6,  38 => 4,  33 => 1,);
     }
 
     public function getSourceContext()
@@ -209,17 +213,17 @@ class __TwigTemplate_b7a5b81b1457ac8d6d057183551440a820a26edad887301dc82622d98ac
 <html>
 <head>
     <title>{% block title %} Nordcoders |{% endblock %}</title>
+    <link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,400\" rel=\"stylesheet\">
+    <link rel=\"stylesheet\" href=\"{{ asset('css/app.css') }}\">
+    <link rel=\"icon\" type=\"image/x-icon\" href=\"{{ asset('favicon.png') }}\">
     {% block stylesheets %}
-        <link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,400\" rel=\"stylesheet\">
-        <link rel=\"stylesheet\" href=\"{{ asset('css/app.css') }}\"/>
-        <link rel=\"icon\" type=\"image/x-icon\" href=\"{{ asset('favicon.svg') }}\" />
     {% endblock %}
 <body>
 <header>
     <div class=\"container top-nav\">
         <div class=\"logo\">
             <div class=\"burger\" id=\"toggle-burger\">&#9776;</div>
-            <a href=\"{{path('homepage')}}\" class=\"logo-link\">NORDCODERS</a>
+            <a href=\"{{ path('homepage') }}\" class=\"logo-link\">Nordcoders</a>
         </div>
         {% include '@App/includes/navbar.html.twig' %}
     </div>
@@ -234,8 +238,12 @@ class __TwigTemplate_b7a5b81b1457ac8d6d057183551440a820a26edad887301dc82622d98ac
     {% endblock %}
 </div>
 <div class=\"footer\">
-    <div class=\"footer-element\">Coded With <ion-icon name=\"heart\"></ion-icon> by Ludovic Guénet | {{ \"now\"|date(\"Y\") }}</div>
-    <div class=\"footer-element\">L'objectif de ce site est de partager avec vous ce que j'apprends. Je me suis interessé au développement web depuis un certain temps déjà et j'ai envie de partager ça avec vous dès maintenant</div>
+    <div class=\"footer-element\">Coded With
+        <ion-icon name=\"heart\"></ion-icon>
+        by Ludovic Guénet | {{ \"now\"|date(\"Y\") }}</div>
+    <div class=\"footer-element\">L'objectif de ce site est de partager avec vous ce que j'apprends. Je me suis interessé
+        au développement web depuis un certain temps déjà et j'ai envie de partager ça avec vous dès maintenant
+    </div>
 </div>
 <script src=\"{{ asset('js/app.js') }}\"></script>
 <script src=\"https://unpkg.com/ionicons@4.1.2/dist/ionicons.js\"></script>

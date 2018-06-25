@@ -11,19 +11,21 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
-class UserType extends AbstractType
+class UserEditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', TextType::class)
+            ->add('username', TextType::class, ['attr' => ['class' => 'input']])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Confirmez le mot de passe'],
-                'options' => ['attr' => ['class' => 'input']]
+                'options' => ['attr' => ['class' => 'input']],
+                'required' => false
             ])
-            ->add('save', SubmitType::class, [
+            ->add('avatar', AvatarType::class, ['label' => 'Choisir un avatar', 'required' => false])
+            ->add('Mettre à jour', SubmitType::class, [
                 'attr' => ['class' => 'btn']
             ]);
     }

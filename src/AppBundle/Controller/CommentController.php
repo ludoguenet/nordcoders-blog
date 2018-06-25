@@ -51,8 +51,8 @@ class CommentController extends Controller
             $commentRepository = $em->getRepository('AppBundle:Comment');
             $newComment = $request->request->get('_content');
             $commentToUpdate = $commentRepository->find($request->request->get('_commentId'));
-            if ($commentToUpdate == null) {
-                return $this->json(['fail' => 'Ce commentaire n\'exsite pas']);
+            if ($commentToUpdate == null || strlen($newComment) <= 3) {
+                return $this->json(['fail' => 'Une erreur est survenue']);
             }
             $this->denyAccessUnlessGranted('edit', $commentToUpdate);
             $commentToUpdate->setContent($newComment);
@@ -77,6 +77,7 @@ class CommentController extends Controller
         if ($request->isMethod('POST') && $this->isCsrfTokenValid('comment-item', $submittedToken)) {
             $em->remove($comment);
             $em->flush();
+            $this->get('session')->getFlashBag()->set('notice', 'Votre commentaire a bien été supprimé');
         }
         $postSlug = $comment->getPost()->getSlug();
         return $this->redirectToRoute('viewpost', [

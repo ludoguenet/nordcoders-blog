@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
+ * @ORM\HasLifecycleCallbacks
  * @UniqueEntity("username")
  */
 class User implements UserInterface
@@ -29,7 +30,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
-     * @Assert\Length(min=3)
+     * @Assert\Length(min=3, max=10)
      */
     private $username;
 
@@ -40,6 +41,14 @@ class User implements UserInterface
      * @Assert\Length(min=6)
      */
     private $password;
+
+    /**
+     * @var Avatar
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Avatar", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $avatar;
 
     /**
      * @var array
@@ -167,5 +176,29 @@ class User implements UserInterface
         $this->roles = $roles;
 
         return $this;
+    }
+
+    /**
+     * Set avatar.
+     *
+     * @param string $avatar
+     *
+     * @return User
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get avatar.
+     *
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
     }
 }

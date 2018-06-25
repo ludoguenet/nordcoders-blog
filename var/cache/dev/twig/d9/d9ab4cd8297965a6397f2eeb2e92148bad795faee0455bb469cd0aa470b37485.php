@@ -36,33 +36,40 @@ class __TwigTemplate_276836ca947b4412bc704c9a36c7cf11bf449c2e45cf7b32870165f3c28
         // line 4
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
             // line 5
-            echo "            <li><a href=\"#\">Bonjour, ";
+            echo "            <li><a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("profile");
+            echo "\">Bonjour, ";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 5, $this->source); })()), "user", array()), "username", array()), "html", null, true);
             echo "</a></li>
-            <li><a href=\"";
-            // line 6
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
-            echo "\">Se déconnecter</a></li>
         ";
         } else {
-            // line 8
+            // line 7
             echo "            <li><a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
             echo "\">
                     <ion-icon name=\"person\"></ion-icon>
                 </a></li>
             <li><a href=\"";
-            // line 11
+            // line 10
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("register");
             echo "\">
                     <ion-icon name=\"person-add\"></ion-icon>
                 </a></li>
         ";
         }
-        // line 15
+        // line 14
+        echo "        ";
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
+            // line 15
+            echo "            <li><a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
+            echo "\">Se déconnecter</a></li>
+        ";
+        }
+        // line 17
         echo "        ";
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
-            // line 16
+            // line 18
             echo "            <li><a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("addpost");
             echo "\">
@@ -70,13 +77,14 @@ class __TwigTemplate_276836ca947b4412bc704c9a36c7cf11bf449c2e45cf7b32870165f3c28
                 </a></li>
         ";
         }
-        // line 20
+        // line 22
         echo "        <li>
             <form action=\"";
-        // line 21
+        // line 23
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("search");
         echo "\" method=\"GET\">
-                <input class=\"input-search\" id=\"search\" type=\"text\" name=\"q\" placeholder=\"Rechercher\">
+                <input class=\"input-search\" id=\"search\" type=\"text\" name=\"q\"
+                       placeholder=\"Rechercher par titre, tags...\">
             </form>
         </li>
     </ul>
@@ -101,7 +109,7 @@ class __TwigTemplate_276836ca947b4412bc704c9a36c7cf11bf449c2e45cf7b32870165f3c28
 
     public function getDebugInfo()
     {
-        return array (  77 => 21,  74 => 20,  66 => 16,  63 => 15,  56 => 11,  49 => 8,  44 => 6,  39 => 5,  37 => 4,  33 => 3,  29 => 1,);
+        return array (  84 => 23,  81 => 22,  73 => 18,  70 => 17,  64 => 15,  61 => 14,  54 => 10,  47 => 7,  39 => 5,  37 => 4,  33 => 3,  29 => 1,);
     }
 
     public function getSourceContext()
@@ -110,8 +118,7 @@ class __TwigTemplate_276836ca947b4412bc704c9a36c7cf11bf449c2e45cf7b32870165f3c28
     <ul id=\"ul-list\">
         <li><a href=\"{{ path('homepage') }}\">Blog</a></li>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <li><a href=\"#\">Bonjour, {{ app.user.username }}</a></li>
-            <li><a href=\"{{ path('logout') }}\">Se déconnecter</a></li>
+            <li><a href=\"{{ path('profile') }}\">Bonjour, {{ app.user.username }}</a></li>
         {% else %}
             <li><a href=\"{{ path('login') }}\">
                     <ion-icon name=\"person\"></ion-icon>
@@ -120,6 +127,9 @@ class __TwigTemplate_276836ca947b4412bc704c9a36c7cf11bf449c2e45cf7b32870165f3c28
                     <ion-icon name=\"person-add\"></ion-icon>
                 </a></li>
         {% endif %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li><a href=\"{{ path('logout') }}\">Se déconnecter</a></li>
+        {% endif %}
         {% if is_granted('ROLE_ADMIN') %}
             <li><a href=\"{{ path('addpost') }}\">
                     <ion-icon name=\"paper-plane\"></ion-icon>
@@ -127,7 +137,8 @@ class __TwigTemplate_276836ca947b4412bc704c9a36c7cf11bf449c2e45cf7b32870165f3c28
         {% endif %}
         <li>
             <form action=\"{{ path('search') }}\" method=\"GET\">
-                <input class=\"input-search\" id=\"search\" type=\"text\" name=\"q\" placeholder=\"Rechercher\">
+                <input class=\"input-search\" id=\"search\" type=\"text\" name=\"q\"
+                       placeholder=\"Rechercher par titre, tags...\">
             </form>
         </li>
     </ul>

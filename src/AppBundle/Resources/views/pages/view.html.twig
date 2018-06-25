@@ -1,5 +1,8 @@
 {% extends"@App/layout.html.twig" %}
 {% block title %} {{ parent() }} {{ post.title }} {% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/dark-atom.css') }}">
+    {% endblock %}
 {% block body %}
     <div class="blog-post">
         <h1>{{ post.title }}</h1>
@@ -34,7 +37,14 @@
         {% if comments|length > 0 %}
             {% for comment in comments %}
                 <div class="comment">
-                    <em>{{ comment.user.username }} a dit</em>
+                    <em>
+                        {% if comment.user.avatar != null %}
+                            <img class="avatar" src="{{ asset('uploads/avatar/' ~ comment.user.avatar ) }}"
+                                 alt="avatar">
+                        {% else %}
+                            <img class="avatar" src="{{ asset('uploads/avatar/default.png') }}" alt="avatar">
+                        {% endif %}
+                        {{ comment.user.username }} a dit</em>
                     <p>{{ comment.content }}</p>
                     {% if (is_granted('delete', comment)) %}
                         <form style="display: inline-block" action="{{ path('comment.delete', {'id': comment.id}) }}"
@@ -46,7 +56,7 @@
                         </form>
                     {% endif %}
                     {% if (is_granted('edit', comment)) %}
-                        <a href="{{ path('comment.update') }}" id="edit-comment" data-id="{{ comment.id }}"
+                        <a href="{{ path('comment.update') }}" id="edit-button" data-id="{{ comment.id }}"
                            class="btn btn-warning btn-sm">
                             <ion-icon name="code-working"></ion-icon>
                         </a>
@@ -61,4 +71,6 @@
 {% block javascripts %}
     <script src="{{ asset('js/addComment.js') }}"></script>
     <script src="{{ asset('js/editComment.js') }}"></script>
+    <script src="{{ asset('js/highlight.min.js') }}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}
