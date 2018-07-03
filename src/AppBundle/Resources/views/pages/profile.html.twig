@@ -3,10 +3,12 @@
 {% block body %}
     <h1>Mon compte</h1>
     {% if (app.user.avatar != null) %}
-        <img width="25%" src="{{ asset('uploads/avatar/') ~ app.user.avatar }}" alt="avatar">
+        <img class="profileAvatar" src="{{ asset('uploads/avatar/') ~ app.user.avatar }}" alt="avatar">
     {% endif %}
     {{ form_start(form) }}
     {{ form_errors(form.avatar) }}
-    {{ form_row(form.avatar, {'attr': {'class' : 'input'}}) }}
+    {{ form_row(form.avatar, {'attr': {'class' : 'mb-1'}}) }}
     {{ form_end(form) }}
+    <br>
+    <a href="{{ path('profilePassword') }}"><i class="fas fa-key"></i> Modifier mon mot de passe</a>
 {% endblock %}

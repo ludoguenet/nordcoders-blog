@@ -66,6 +66,9 @@ class AdminController extends Controller
 
     /**
      * @Route("admin/posts/delete/{id}", name="deletepost", requirements={"id"="\d+"})
+     * @param Request $request
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, int $id)
     {

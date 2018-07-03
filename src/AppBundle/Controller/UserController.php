@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\User;
 use AppBundle\Form\UserEditType;
+use AppBundle\Form\UserPasswordEditType;
 use AppBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -58,10 +59,9 @@ class UserController extends Controller
     /**
      * @Route("profile", name="profile")
      * @param Request $request
-     * @param UserPasswordEncoderInterface $encoder
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function profileAction(Request $request, UserPasswordEncoderInterface $encoder)
+    public function profileAction(Request $request)
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $user = $this->getUser();
@@ -69,7 +69,6 @@ class UserController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $user->setPassword($encoder->encodePassword($user, $user->getPassword()));
             $em->persist($user);
             $em->flush();;
             $this->get('session')->getFlashBag()->set('notice', 'Votre profile a bien été mis à jour');
@@ -81,6 +80,41 @@ class UserController extends Controller
             'user' => $user,
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("user/changepassword", name="profilePassword")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function profilePasswordAction(Request $request, UserPasswordEncoderInterface $encoder)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+        $form = $this->get('form.factory')->create(UserPasswordEditType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $user = $this->getUser();
+            $user->setPassword($encoder->encodePassword($user, $user->getPassword()));
+            $em->persist($user);
+            $em->flush();;
+            $this->get('session')->getFlashBag()->set('notice', 'Votre mot de passe a bien été modifié');
+            return $this->redirectToRoute('profile');
+        }
+        return $this->render('@App/pages/editPassword.html.twig', [
+            'user' => $user,
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/binder", name="binder")
+     */
+    public function binder()
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
     }
 
     /**

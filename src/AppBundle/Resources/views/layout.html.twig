@@ -4,6 +4,7 @@
     <title>{% block title %} Nordcoders |{% endblock %}</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}">
     {% block stylesheets %}
     {% endblock %}
@@ -28,14 +29,13 @@
 </div>
 <div class="footer">
     <div class="footer-element">Coded With
-        <ion-icon name="heart"></ion-icon>
+        <i class="fas fa-heart"></i>
         by Ludovic Guénet | {{ "now"|date("Y") }}</div>
     <div class="footer-element">L'objectif de ce site est de partager avec vous ce que j'apprends. Je me suis interessé
         au développement web depuis un certain temps déjà et j'ai envie de partager ça avec vous dès maintenant
     </div>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
-<script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
 {% block javascripts %}
 {% endblock javascripts %}
 </body>

@@ -64,10 +64,10 @@ class User extends \AppBundle\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'username', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'avatar', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'roles'];
+            return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'username', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'avatar', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'roles', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'bookmarks'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'username', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'avatar', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'roles'];
+        return ['__isInitialized__', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'id', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'username', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'avatar', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'roles', '' . "\0" . 'AppBundle\\Entity\\User' . "\0" . 'bookmarks'];
     }
 
     /**
@@ -296,6 +296,28 @@ class User extends \AppBundle\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAvatar', []);
 
         return parent::getAvatar();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setBookmarks($bookmarks)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBookmarks', [$bookmarks]);
+
+        return parent::setBookmarks($bookmarks);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBookmarks()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBookmarks', []);
+
+        return parent::getBookmarks();
     }
 
 }

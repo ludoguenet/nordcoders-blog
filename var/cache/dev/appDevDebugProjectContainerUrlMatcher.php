@@ -163,6 +163,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::searchAction',  '_route' => 'search',);
         }
 
+        // addBookmark
+        if (0 === strpos($pathinfo, '/addbookmark') && preg_match('#^/addbookmark/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'addBookmark')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::addBookmarkAction',));
+        }
+
         // login
         if ('/login' === $pathinfo) {
             return array (  '_controller' => 'AppBundle\\Controller\\UserController::loginAction',  '_route' => 'login',);
@@ -176,6 +181,16 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         // register
         if ('/register' === $pathinfo) {
             return array (  '_controller' => 'AppBundle\\Controller\\UserController::registerAction',  '_route' => 'register',);
+        }
+
+        // profilePassword
+        if ('/user/changepassword' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\UserController::profilePasswordAction',  '_route' => 'profilePassword',);
+        }
+
+        // binder
+        if ('/binder' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\UserController::binder',  '_route' => 'binder',);
         }
 
         if ('/' === $pathinfo && !$allow) {

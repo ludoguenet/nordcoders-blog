@@ -11,10 +11,10 @@
             <img src="{{ asset('uploads/img/') ~ post.image.id ~ '.' ~ post.image.extension }}"
                  alt="{{ post.image.alt }}">
         {% endif %}
-        <p>{{ post.content|raw }}</p>
+        {{ post.content|raw }}
         <p>
             {% for tag in post.tags %}
-                <strong><span class="tag"><ion-icon name="pricetag"></ion-icon> {{ tag.name }}</span></strong>
+                <strong><span class="tag"><i class="fas fa-tag"></i> {{ tag.name }}</span></strong>
             {% endfor %}
         </p>
     </div>
@@ -31,7 +31,7 @@
         {% endif %}
         <br>
         <h2>
-            <ion-icon name="chatbubbles"></ion-icon>
+            <i class="fas fa-comments"></i>
             Commentaires:
         </h2>
         {% if comments|length > 0 %}
@@ -51,14 +51,14 @@
                               method="post">
                             <input type="hidden" name="token" value="{{ csrf_token('comment-item') }}">
                             <button class="btn btn-danger btn-sm" type="submit">
-                                <ion-icon name="trash"></ion-icon>
+                                <i class="fas fa-trash"></i>
                             </button>
                         </form>
                     {% endif %}
                     {% if (is_granted('edit', comment)) %}
                         <a href="{{ path('comment.update') }}" id="edit-button" data-id="{{ comment.id }}"
                            class="btn btn-warning btn-sm">
-                            <ion-icon name="code-working"></ion-icon>
+                            <i class="far fa-edit"></i>
                         </a>
                     {% endif %}
                 </div>

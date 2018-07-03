@@ -57,6 +57,13 @@ class User implements UserInterface
      */
     private $roles;
 
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="bookmarks", type="array", nullable=true)
+     */
+    private $bookmarks = [];
+
     public function __construct()
     {
         $this->setRoles(['ROLE_USER']);
@@ -200,5 +207,29 @@ class User implements UserInterface
     public function getAvatar()
     {
         return $this->avatar;
+    }
+
+    /**
+     * Set bookmarks.
+     *
+     * @param array $bookmarks
+     *
+     * @return User
+     */
+    public function setBookmarks($bookmarks)
+    {
+        $this->bookmarks = $bookmarks;
+
+        return $this;
+    }
+
+    /**
+     * Get bookmarks.
+     *
+     * @return array
+     */
+    public function getBookmarks()
+    {
+        return $this->bookmarks;
     }
 }

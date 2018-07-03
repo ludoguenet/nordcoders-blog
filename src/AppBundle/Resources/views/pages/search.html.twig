@@ -16,11 +16,15 @@
                     <p>{{ post.content|truncate|raw }}</p>
                     <p>
                         {% for tag in post.tags %}
-                            <strong><span class="tag"><ion-icon
-                                            name="pricetag"></ion-icon> {{ tag.name }}</span></strong>
+                            <strong><span class="tag"><i class="fas fa-tag"></i> {{ tag.name }}</span></strong>
                         {% endfor %}
                     </p>
                     <a href="{{ path('viewpost', {'slug': post.slug}) }}" class="btn">Lire la suite</a>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {% if post.id not in app.user.bookmarks%}
+                         <a href="{{ path('addBookmark', {'id': post.id}) }}" class="btn"><i class="far fa-bookmark"></i> Ajouter au classeur</a>
+                        {% endif %}
+                    {% endif %}
                     {% if is_granted('ROLE_ADMIN') %}
                         <a class="btn btn-warning" href="{{ path('editpost', {'id': post.id}) }}">Editer</a>
                         <form style="display:inline-block" action="{{ path('deletepost', {'id': post.id}) }}"

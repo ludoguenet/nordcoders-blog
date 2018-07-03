@@ -54,6 +54,10 @@ button {
     background: none;
 }
 
+.mb-1 {
+    margin-bottom: 1em;
+}
+
 hr {
     border: 0;
     height: 0;
@@ -199,6 +203,15 @@ header {
     border-radius: 50%;
 }
 
+.profileAvatar {
+    margin: 0 auto;
+    display: block;
+    width: 150px;
+    height: 150px;
+    box-shadow: 3px 3px 5px #656565;
+    border-radius: 50%;
+}
+
 .is128 {
     width: 128px;
 }
@@ -211,7 +224,7 @@ header {
 .input,
 .input-search {
     box-sizing: border-box;
-    padding: 10px 15px;
+    padding: 8px 15px;
     border: 1px solid var(--main-color);
     transition: border ease-in-out .2s;
 }
@@ -237,6 +250,12 @@ header {
     object-fit: cover;
     width: 230px;
     height: 230px;
+    opacity: .8;
+    transition: opacity ease-in-out .4s;
+}
+
+.thumb1:hover {
+    opacity: 1;
 }
 
 .tag {

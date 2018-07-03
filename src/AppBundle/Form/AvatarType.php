@@ -13,7 +13,7 @@ class AvatarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('attachment', FileType::class, array('label_format' => 'Avatar'));
+            ->add('attachment', FileType::class, array('label_format' => ' '));
     }
 
     public function configureOptions(OptionsResolver $resolver)

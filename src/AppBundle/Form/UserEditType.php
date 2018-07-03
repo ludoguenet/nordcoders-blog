@@ -17,13 +17,6 @@ class UserEditType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, ['attr' => ['class' => 'input']])
-            ->add('password', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'first_options' => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Confirmez le mot de passe'],
-                'options' => ['attr' => ['class' => 'input']],
-                'required' => false
-            ])
             ->add('avatar', AvatarType::class, ['label' => 'Choisir un avatar', 'required' => false])
             ->add('Mettre à jour', SubmitType::class, [
                 'attr' => ['class' => 'btn']

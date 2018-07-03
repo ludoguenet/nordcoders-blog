@@ -85,4 +85,24 @@ class DefaultController extends Controller
             'pagesNbr' => $pageNbr
         ]);
     }
+
+    /**
+     * @Route("/addbookmark/{id}", name="addBookmark")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function addBookmarkAction(Request $request)
+    {
+         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+         $em = $this->getDoctrine()->getManager();
+         $user = $this->getUser();
+         $postId = $request->get('id');
+         $bookmarks = $user->getBookmarks();
+         if (!in_array($postId, $bookmarks)) {
+             array_push($bookmarks, $postId);
+             $user->setBookmarks($bookmarks);
+             $em->persist($user);
+             $em->flush();
+         }
+         return $this->redirectToRoute('homepage');
+    }
 }
