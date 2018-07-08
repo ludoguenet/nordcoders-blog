@@ -2,6 +2,7 @@
 {% block title %} {{ parent() }} Mon compte {% endblock %}
 {% block body %}
     <h1>Mon compte</h1>
+    <hr>
     {% if (app.user.avatar != null) %}
         <img class="profileAvatar" src="{{ asset('uploads/avatar/') ~ app.user.avatar }}" alt="avatar">
     {% endif %}

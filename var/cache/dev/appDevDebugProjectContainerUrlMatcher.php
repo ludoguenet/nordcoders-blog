@@ -164,7 +164,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         // addBookmark
-        if (0 === strpos($pathinfo, '/addbookmark') && preg_match('#^/addbookmark/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+        if (0 === strpos($pathinfo, '/addbookmark') && preg_match('#^/addbookmark/(?P<slug>[^/]++)$#sD', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'addBookmark')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::addBookmarkAction',));
         }
 

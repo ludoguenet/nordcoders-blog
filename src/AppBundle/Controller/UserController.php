@@ -115,6 +115,11 @@ class UserController extends Controller
     public function binder()
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+        $bookmarkSlugs = $user->getBookmarks();
+        return $this->render('@App/pages/binder.html.twig', [
+            'bookmarkSlugs' => $bookmarkSlugs
+        ]);
     }
 
     /**

@@ -72,34 +72,35 @@ class __TwigTemplate_20005efcac46e6074e0fdc7662e89db52d54eee319bf8a8681062b64b44
 
         // line 4
         echo "    <h1>Mon compte</h1>
+    <hr>
     ";
-        // line 5
-        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 5, $this->source); })()), "user", array()), "avatar", array()) != null)) {
-            // line 6
+        // line 6
+        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 6, $this->source); })()), "user", array()), "avatar", array()) != null)) {
+            // line 7
             echo "        <img class=\"profileAvatar\" src=\"";
-            echo twig_escape_filter($this->env, ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("uploads/avatar/") . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 6, $this->source); })()), "user", array()), "avatar", array())), "html", null, true);
+            echo twig_escape_filter($this->env, ($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("uploads/avatar/") . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 7, $this->source); })()), "user", array()), "avatar", array())), "html", null, true);
             echo "\" alt=\"avatar\">
     ";
         }
-        // line 8
-        echo "    ";
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 8, $this->source); })()), 'form_start');
-        echo "
-    ";
         // line 9
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 9, $this->source); })()), "avatar", array()), 'errors');
+        echo "    ";
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 9, $this->source); })()), 'form_start');
         echo "
     ";
         // line 10
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 10, $this->source); })()), "avatar", array()), 'row', array("attr" => array("class" => "mb-1")));
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 10, $this->source); })()), "avatar", array()), 'errors');
         echo "
     ";
         // line 11
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 11, $this->source); })()), 'form_end');
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 11, $this->source); })()), "avatar", array()), 'row', array("attr" => array("class" => "mb-1")));
+        echo "
+    ";
+        // line 12
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 12, $this->source); })()), 'form_end');
         echo "
     <br>
     <a href=\"";
-        // line 13
+        // line 14
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("profilePassword");
         echo "\"><i class=\"fas fa-key\"></i> Modifier mon mot de passe</a>
 ";
@@ -123,7 +124,7 @@ class __TwigTemplate_20005efcac46e6074e0fdc7662e89db52d54eee319bf8a8681062b64b44
 
     public function getDebugInfo()
     {
-        return array (  103 => 13,  98 => 11,  94 => 10,  90 => 9,  85 => 8,  79 => 6,  77 => 5,  74 => 4,  65 => 3,  45 => 2,  15 => 1,);
+        return array (  104 => 14,  99 => 12,  95 => 11,  91 => 10,  86 => 9,  80 => 7,  78 => 6,  74 => 4,  65 => 3,  45 => 2,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -132,6 +133,7 @@ class __TwigTemplate_20005efcac46e6074e0fdc7662e89db52d54eee319bf8a8681062b64b44
 {% block title %} {{ parent() }} Mon compte {% endblock %}
 {% block body %}
     <h1>Mon compte</h1>
+    <hr>
     {% if (app.user.avatar != null) %}
         <img class=\"profileAvatar\" src=\"{{ asset('uploads/avatar/') ~ app.user.avatar }}\" alt=\"avatar\">
     {% endif %}

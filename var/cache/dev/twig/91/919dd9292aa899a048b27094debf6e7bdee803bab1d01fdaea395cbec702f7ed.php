@@ -72,17 +72,18 @@ class __TwigTemplate_36a63eef7e3ee329f21f9c6cd02bfe4a398c29ca648c0381b37275a0d0b
 
         // line 4
         echo "    <h1>Changer mot de passe</h1>
-    ";
-        // line 5
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 5, $this->source); })()), 'form_start');
-        echo "
+    <hr>
     ";
         // line 6
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 6, $this->source); })()), 'form_end');
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 6, $this->source); })()), 'form_start');
+        echo "
+    ";
+        // line 7
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new Twig_Error_Runtime('Variable "form" does not exist.', 7, $this->source); })()), 'form_end');
         echo "
     <br>
     <a href=\"";
-        // line 8
+        // line 9
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("profile");
         echo "\"><i class=\"fas fa-user-circle\"></i> Revenir à mon compte</a>
 ";
@@ -106,7 +107,7 @@ class __TwigTemplate_36a63eef7e3ee329f21f9c6cd02bfe4a398c29ca648c0381b37275a0d0b
 
     public function getDebugInfo()
     {
-        return array (  86 => 8,  81 => 6,  77 => 5,  74 => 4,  65 => 3,  45 => 2,  15 => 1,);
+        return array (  87 => 9,  82 => 7,  78 => 6,  74 => 4,  65 => 3,  45 => 2,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -115,6 +116,7 @@ class __TwigTemplate_36a63eef7e3ee329f21f9c6cd02bfe4a398c29ca648c0381b37275a0d0b
 {% block title %} {{ parent() }} Mon compte {% endblock %}
 {% block body %}
     <h1>Changer mot de passe</h1>
+    <hr>
     {{ form_start(form) }}
     {{ form_end(form) }}
     <br>

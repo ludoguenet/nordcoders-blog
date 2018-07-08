@@ -21,8 +21,8 @@
                 </p>
                 <a href="{{ path('viewpost', {'slug': post.slug}) }}" class="btn">Lire la suite</a>
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    {% if post.id not in app.user.bookmarks%}
-                     <a href="{{ path('addBookmark', {'id': post.id}) }}" class="btn"><i class="far fa-bookmark"></i> Ajouter au classeur</a>
+                    {% if post.slug not in app.user.bookmarks %}
+                     <a href="{{ path('addBookmark', {'slug': post.slug}) }}" class="btn"><i class="far fa-bookmark"></i> Ajouter au classeur</a>
                     {% endif %}
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}

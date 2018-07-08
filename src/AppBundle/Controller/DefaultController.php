@@ -87,7 +87,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/addbookmark/{id}", name="addBookmark")
+     * @Route("/addbookmark/{slug}", name="addBookmark")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function addBookmarkAction(Request $request)
@@ -95,10 +95,10 @@ class DefaultController extends Controller
          $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
          $em = $this->getDoctrine()->getManager();
          $user = $this->getUser();
-         $postId = $request->get('id');
+         $postSlug = $request->get('slug');
          $bookmarks = $user->getBookmarks();
-         if (!in_array($postId, $bookmarks)) {
-             array_push($bookmarks, $postId);
+         if (!in_array($postSlug, $bookmarks)) {
+             array_push($bookmarks, $postSlug);
              $user->setBookmarks($bookmarks);
              $em->persist($user);
              $em->flush();

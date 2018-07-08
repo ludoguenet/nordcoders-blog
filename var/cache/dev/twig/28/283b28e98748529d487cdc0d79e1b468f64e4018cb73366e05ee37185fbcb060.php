@@ -138,10 +138,10 @@ class __TwigTemplate_2d551107883a2d2426529c2fa7d4dba92ff3b034b2a8b69657033692fef
             if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("IS_AUTHENTICATED_FULLY")) {
                 // line 24
                 echo "                    ";
-                if (!twig_in_filter(twig_get_attribute($this->env, $this->source, $context["post"], "id", array()), twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 24, $this->source); })()), "user", array()), "bookmarks", array()))) {
+                if (!twig_in_filter(twig_get_attribute($this->env, $this->source, $context["post"], "slug", array()), twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 24, $this->source); })()), "user", array()), "bookmarks", array()))) {
                     // line 25
                     echo "                     <a href=\"";
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("addBookmark", array("id" => twig_get_attribute($this->env, $this->source, $context["post"], "id", array()))), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("addBookmark", array("slug" => twig_get_attribute($this->env, $this->source, $context["post"], "slug", array()))), "html", null, true);
                     echo "\" class=\"btn\"><i class=\"far fa-bookmark\"></i> Ajouter au classeur</a>
                     ";
                 }
@@ -257,8 +257,8 @@ class __TwigTemplate_2d551107883a2d2426529c2fa7d4dba92ff3b034b2a8b69657033692fef
                 </p>
                 <a href=\"{{ path('viewpost', {'slug': post.slug}) }}\" class=\"btn\">Lire la suite</a>
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    {% if post.id not in app.user.bookmarks%}
-                     <a href=\"{{ path('addBookmark', {'id': post.id}) }}\" class=\"btn\"><i class=\"far fa-bookmark\"></i> Ajouter au classeur</a>
+                    {% if post.slug not in app.user.bookmarks %}
+                     <a href=\"{{ path('addBookmark', {'slug': post.slug}) }}\" class=\"btn\"><i class=\"far fa-bookmark\"></i> Ajouter au classeur</a>
                     {% endif %}
                 {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
